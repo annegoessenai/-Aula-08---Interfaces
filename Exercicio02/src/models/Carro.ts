@@ -3,11 +3,16 @@ import { CarroProps } from "../interfaces/VeiculoProps.js";
 
 export class Carro extends Veiculo<CarroProps> {
 
-    getQuantidadeDePortas(): number {
+    public get getQuantidadeDePortas(): number {
         return this.props.quantidadeDePortas;
     }
 
-    setQuantidadeDePortas(qtd: number): void {
+    public set setQuantidadeDePortas(qtd: number) {
+        if (qtd <= 0) {
+            console.log("\nERRO: A quantidade de portas deve ser maior que zero!");
+            return;
+        }
+
         this.props.quantidadeDePortas = qtd;
     }
 }

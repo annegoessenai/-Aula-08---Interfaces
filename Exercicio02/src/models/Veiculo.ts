@@ -1,30 +1,45 @@
 import { VeiculoProps } from "../interfaces/VeiculoProps.js";
 
-export class Veiculo<T extends VeiculoProps> {
+export class Veiculo<T extends VeiculoProps = VeiculoProps> {
 
-    protected props: T;
+    constructor(protected props: T) {}
 
-    constructor(props: T) {
-        this.props = props;
-    }
-
-    getMarca(): string {
+    public get getMarca(): string {
         return this.props.marca;
     }
 
-    getModelo(): string {
+    public get getModelo(): string {
         return this.props.modelo;
     }
 
-    getAno(): number {
+    public get getAno(): number {
         return this.props.ano;
     }
 
-    setMarca(marca: string): void {
+    public set setMarca(marca: string) {
+        if (marca.trim().length === 0) {
+            console.log("\nERRO: A marca não pode ser vazia!");
+            return;
+        }
+
         this.props.marca = marca;
     }
 
-    setModelo(modelo: string): void {
+    public set setModelo(modelo: string) {
+        if (modelo.trim().length === 0) {
+            console.log("\nERRO: O modelo não pode ser vazio!");
+            return;
+        }
+
         this.props.modelo = modelo;
+    }
+
+    public set setAno(ano: number) {
+        if (ano <= 0) {
+            console.log("\nERRO: O ano deve ser maior que zero!");
+            return;
+        }
+
+        this.props.ano = ano;
     }
 }
