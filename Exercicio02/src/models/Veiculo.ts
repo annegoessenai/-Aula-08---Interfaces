@@ -1,26 +1,30 @@
-import { VeiculoProps } from "../Interfaces/VeiculoProps.js";
+import { VeiculoProps } from "../interfaces/VeiculoProps.js";
 
-export class Veiculo<T extends VeiculoProps = VeiculoProps> {
+export class Veiculo<T extends VeiculoProps> {
 
-    constructor(protected props: T) {}
+    protected props: T;
 
-    public get getMarca(): string {
+    constructor(props: T) {
+        this.props = props;
+    }
+
+    getMarca(): string {
         return this.props.marca;
     }
 
-    public get getModelo(): string {
+    getModelo(): string {
         return this.props.modelo;
     }
 
-    public get getAno(): number {
+    getAno(): number {
         return this.props.ano;
     }
 
-    public set setMarca(marca: string) {
+    setMarca(marca: string): void {
         this.props.marca = marca;
     }
 
-    public set setModelo(modelo: string) {
+    setModelo(modelo: string): void {
         this.props.modelo = modelo;
     }
 }

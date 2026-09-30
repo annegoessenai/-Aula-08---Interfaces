@@ -1,13 +1,13 @@
 import { Veiculo } from "./Veiculo.js";
-import { VeiculoProps } from "../Interfaces/VeiculoProps.js";
+import { CarroProps } from "../interfaces/VeiculoProps.js";
 
-export class Carro extends Veiculo<VeiculoProps> {
+export class Carro extends Veiculo<CarroProps> {
 
-    public get getQuantidadeDePortas(): number {
-        return this.props.quantidadeDePortas!;
+    getQuantidadeDePortas(): number {
+        return this.props.quantidadeDePortas;
     }
 
-    public set setQuantidadeDePortas(qtd: number) {
+    setQuantidadeDePortas(qtd: number): void {
         this.props.quantidadeDePortas = qtd;
     }
 }
